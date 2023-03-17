@@ -43,7 +43,7 @@ resource "azurerm_dns_zone" "dns-testdomain" {
   resource_group_name = azurerm_resource_group.rg-dnstest.name
 }
 
-resource "azurerm_dns_zone" "dns-testdomain" {
+resource "azurerm_dns_zone" "dns-subdomain" {
   name                = "sub.testdomain.com"
   resource_group_name = azurerm_resource_group.rg-dnstest.name
 }
