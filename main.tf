@@ -41,6 +41,10 @@ resource "azurerm_resource_group" "rg-dnstest" {
 resource "azurerm_dns_zone" "dns-testdomain" {
   name                = "testdomain.com"
   resource_group_name = azurerm_resource_group.rg-dnstest.name
+
+  lifecycle {
+        ignore_changes = "number_of_record_sets"
+    }
 }
 
 resource "azurerm_dns_zone" "dns-subdomain" {
