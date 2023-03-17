@@ -43,7 +43,7 @@ resource "azurerm_dns_zone" "dns-testdomain" {
   resource_group_name = azurerm_resource_group.rg-dnstest.name
 
   lifecycle {
-        ignore_changes = "number_of_record_sets"
+        ignore_changes = ["number_of_record_sets"]
     }
 }
 
