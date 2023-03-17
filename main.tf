@@ -51,7 +51,7 @@ resource "azurerm_dns_zone" "dns-subdomain" {
 resource "azurerm_role_definition" "dns-subdomain-writer" {
   role_definition_id = "00000000-0000-0000-0000-000000000000"
   name               = "dns-subdomain-writer"
-  scope              = data.azurerm_dns_zone.dns-testdomain.id
+  scope              = azurerm_dns_zone.dns-testdomain.id
 
   permissions {
     actions     = ["Microsoft.Network/dnsZones/A/write", 
@@ -79,14 +79,14 @@ resource "azurerm_role_definition" "dns-subdomain-writer" {
   }
 
   assignable_scopes = [
-    data.azurerm_dns_zone.dns-testdomain.id,
-    data.azurerm_dns_zone.dns-subdomain.id
+    azurerm_dns_zone.dns-testdomain.id ,
+    azurerm_dns_zone.dns-subdomain.id
   ]
 }
 
 resource "azurerm_role_assignment" "dns-subdomain-np1-assign" {
   name               = "00000000-0000-0000-0000-000000000000"
-  scope              = data.azurerm_dns_zone.dns-subdomain.id
+  scope              = azurerm_dns_zone.dns-subdomain.id
   role_definition_id = azurerm_role_definition.dns-subdomain-writer.role_definition_resource_id
   principal_id       = "17328cd2-4ba0-4c07-bb22-6d3154362bf5"
   #need to integrate with user creation later
