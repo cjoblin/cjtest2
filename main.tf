@@ -31,6 +31,7 @@ provider "azurerm" {
   tenant_id       = var.tenantID
   client_id       = var.deploymentAppID
   client_secret   = var.deploymentSecret
+  skip_provider_registration = true
 }
 
 #resource "azurerm_resource_group" "rg-dnstest" {
