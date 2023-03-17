@@ -50,8 +50,11 @@ provider "azurerm" {
 
 resource "azurerm_dns_a_record" "example" {
   name                = "testnp1"
-  zone_name           = azurerm_dns_zone.dns-subdomain.name
-  resource_group_name = azurerm_resource_group.rg-dnstest.name
+  zone_name	      = "sub.testdomain.com"
+  resource_group_name = "rg-dnstest"
+#  link state from parent deployment later - just need permissions/state sharing for now
+#  zone_name           = azurerm_dns_zone.dns-subdomain.name
+#  resource_group_name = azurerm_resource_group.rg-dnstest.name
   ttl                 = 300
   records             = ["10.0.180.17"]
 }
