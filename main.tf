@@ -49,7 +49,6 @@ resource "azurerm_dns_zone" "dns-subdomain" {
 }
 
 resource "azurerm_role_definition" "dns-subdomain-writer" {
-  role_definition_id = "00000000-0000-0000-0000-000000000000"
   name               = "dns-subdomain-writer"
   scope              = azurerm_dns_zone.dns-testdomain.id
 
@@ -85,7 +84,6 @@ resource "azurerm_role_definition" "dns-subdomain-writer" {
 }
 
 resource "azurerm_role_assignment" "dns-subdomain-np1-assign" {
-  name               = "00000000-0000-0000-0000-000000000000"
   scope              = azurerm_dns_zone.dns-subdomain.id
   role_definition_id = azurerm_role_definition.dns-subdomain-writer.role_definition_resource_id
   principal_id       = "17328cd2-4ba0-4c07-bb22-6d3154362bf5"
