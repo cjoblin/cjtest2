@@ -8,15 +8,15 @@ terraform {
   }
 }
 
-variable "targetSubscription"{
-	type = string
-}
-variable "tenantID"{
-	type = string
-}
-variable "deploymentAppID"{
-	type = string
-}
+#variable "targetSubscription"{
+#	type = string
+#}
+#variable "tenantID"{
+#	type = string
+#}
+#variable "deploymentAppID"{
+#	type = string
+#}
 variable "deploymentSecret"{
 	type = string
 }
@@ -27,10 +27,10 @@ variable "vnetCIDR"{
 # Configure the provider
 provider "azurerm" {
   features {}
-  subscription_id = var.targetSubscription
-  tenant_id       = var.tenantID
-  client_id       = var.deploymentAppID
-  client_secret   = var.deploymentSecret
+#  subscription_id = var.targetSubscription
+#  tenant_id       = var.tenantID
+#  client_id       = var.deploymentAppID
+#  client_secret   = var.deploymentSecret
 }
 
 resource "azurerm_resource_group" "rg-dnstest" {
