@@ -38,6 +38,11 @@ resource "azurerm_resource_group" "rg-dnstest" {
   location = "Australia East"
 }
 
+resource "azurerm_resource_group" "rg-empty" {
+  name     = "rg-empty"
+  location = "Australia East"
+}
+
 resource "azurerm_dns_zone" "dns-testdomain" {
   name                = "testdomain.com"
   resource_group_name = azurerm_resource_group.rg-dnstest.name
