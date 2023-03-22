@@ -21,7 +21,7 @@ variable "deploymentSecret"{
 	type = string
 }
 variable "vnetCIDR"{
-	type = string
+	type = list
 }
 
 # Configure the provider
@@ -98,3 +98,31 @@ resource "azurerm_role_assignment" "dns-subdomain-np1-assign" {
   principal_id       = "17328cd2-4ba0-4c07-bb22-6d3154362bf5"
   #need to integrate with user creation later
 }
+
+resource "azurerm_virtual_network" "vnet-test1" {
+  name                = "vnet-test1"
+  location            = azurerm_resource_group.rg-dnstest.location
+  resource_group_name = azurerm_resource_group.rg-dnstest.name
+	
+  address_space       = vnetCIDR[0]
+  dns_servers         = ["10.0.0.4", "10.0.0.5"]
+
+  subnet {
+    name           = "subnet1"
+    address_prefix = "10.0.1.0/24"
+  }
+}
+
+resource "azurerm_private_dns_zone" "dns-priv-testdomain" {
+  name                = "testdomain.com"
+  resource_group_name = azurerm_resource_group.rg-dnstest.name
+}
+
+resource "azurerm_private_dns_zone_virtual_network_link" "privDNSlink1" {
+  name                  = "priv-test-link1"
+  resource_group_name   = azurerm_resource_group.rg-dnstest.name
+  private_dns_zone_name = azurerm_private_dns_zone.rg-dnstest.name
+  virtual_network_id    = azurerm_virtual_network.vnet-test1.id
+  registration_enabled  = true
+}
+
