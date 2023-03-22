@@ -121,7 +121,7 @@ resource "azurerm_private_dns_zone" "dns-priv-testdomain" {
 resource "azurerm_private_dns_zone_virtual_network_link" "privDNSlink1" {
   name                  = "priv-test-link1"
   resource_group_name   = azurerm_resource_group.rg-dnstest.name
-  private_dns_zone_name = azurerm_private_dns_zone.rg-dnstest.name
+  private_dns_zone_name = azurerm_private_dns_zone.dns-priv-testdomain.name
   virtual_network_id    = azurerm_virtual_network.vnet-test1.id
   registration_enabled  = true
 }
