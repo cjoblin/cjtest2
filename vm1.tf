@@ -19,11 +19,13 @@ resource "azurerm_linux_virtual_machine" "vm1" {
   network_interface_ids = [
     azurerm_network_interface.vm1-nic.id,
   ]
-
-  admin_ssh_key {
-    username   = "adminuser"
-    public_key = file("~/.ssh/id_rsa.pub")
-  }
+  
+  admin_password = "P@ssw0rd44"
+  disable_password_authentication = false
+#  admin_ssh_key {
+#    username   = "adminuser"
+#    public_key = file("~/.ssh/id_rsa.pub")
+#  }
 
   os_disk {
     caching              = "ReadWrite"
