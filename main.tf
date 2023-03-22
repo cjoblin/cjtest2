@@ -21,7 +21,7 @@ variable "deploymentSecret"{
 	type = string
 }
 variable "vnetCIDR"{
-	type = string
+	type = list
 }
 
 # Configure the provider
