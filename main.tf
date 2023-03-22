@@ -106,12 +106,15 @@ resource "azurerm_virtual_network" "vnet-test1" {
 	
   address_space       = ["10.0.0.0/16"]
   dns_servers         = ["10.0.0.4", "10.0.0.5"]
-
-  subnet {
-    name           = "subnet1"
-    address_prefix = "10.0.1.0/24"
-  }
 }
+
+resource "azurerm_subnet" "subnet1" {
+  name                 = "subnet1"
+  resource_group_name  = azurerm_resource_group.rg-dnstest.name
+  virtual_network_name = azurerm_virtual_network.vnet-test1.name
+  address_prefixes     = ["10.0.1.0/24"]
+}
+
 
 resource "azurerm_private_dns_zone" "dns-priv-testdomain" {
   name                = "testdomain.com"
