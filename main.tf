@@ -21,7 +21,7 @@ variable "deploymentSecret"{
 	type = string
 }
 variable "vnetCIDR"{
-	type = list
+	type = string
 }
 
 # Configure the provider
@@ -104,7 +104,7 @@ resource "azurerm_virtual_network" "vnet-test1" {
   location            = azurerm_resource_group.rg-dnstest.location
   resource_group_name = azurerm_resource_group.rg-dnstest.name
 	
-  address_space       = var.vnetCIDR[0]
+  address_space       = ["10.0.0.0/16"]
   dns_servers         = ["10.0.0.4", "10.0.0.5"]
 
   subnet {
