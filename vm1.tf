@@ -10,7 +10,7 @@ resource "azurerm_network_interface" "vm1-nic" {
   }
 }
 
-resource "azurerm_linux_virtual_machine" "vm1" {
+resource "azurerm_linux_virtual_machine" "vm2" {
   name                = "vm1"
   resource_group_name = azurerm_resource_group.rg-dnstest.name
   location            = azurerm_resource_group.rg-dnstest.location
