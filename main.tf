@@ -20,9 +20,9 @@ terraform {
 #variable "deploymentSecret"{
 #	type = string
 #}
-variable "vnetCIDR"{
-	type = list
-}
+#variable "vnetCIDR"{
+#	type = list
+#}
 
 # Configure the provider
 provider "azurerm" {
