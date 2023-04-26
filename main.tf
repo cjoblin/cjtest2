@@ -17,9 +17,9 @@ terraform {
 #variable "deploymentAppID"{
 #	type = string
 #}
-variable "deploymentSecret"{
-	type = string
-}
+#variable "deploymentSecret"{
+#	type = string
+#}
 variable "vnetCIDR"{
 	type = list
 }
