@@ -133,3 +133,8 @@ resource "azurerm_dns_zone" "dns-testdomain2" {
   name                = "test.local"
   resource_group_name = "rg-dnstest"
 }
+
+resource "azurerm_private_dns_zone" "dns-priv-testdomain2" {
+  name                = "test.local"
+  resource_group_name = "rg-dnstest"
+}
