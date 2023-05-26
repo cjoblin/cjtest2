@@ -129,3 +129,7 @@ resource "azurerm_private_dns_zone_virtual_network_link" "privDNSlink1" {
   registration_enabled  = true
 }
 
+resource "azurerm_dns_zone" "dns-testdomain2" {
+  name                = "test.local"
+  resource_group_name = "rg-dnstest"
+}
